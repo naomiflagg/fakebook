@@ -23,5 +23,5 @@
   <%= link_to 'Delete profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 <% unless current_user.friends.include?(@user) %>
-  <% link_to 'Add friend', new_friendship_path %>
+  <%= link_to 'Add friend', friendships_path(user: @user.id), method: :post, remote: true %>
 <% end %>

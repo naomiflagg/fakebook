@@ -19,6 +19,9 @@
         <td><%= profile.location %></td>
         <td><%= profile.user.name %></td>
         <td><%= link_to 'Show', profile %></td>
+        <% unless current_user.friends.include?(profile.user) %>
+          <td><%= link_to 'Add friend', friendships_path(user: profile.user_id), method: :post, remote: true %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>

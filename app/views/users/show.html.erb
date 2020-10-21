@@ -1,0 +1,5 @@
+<%= render partial: 'profiles/profile', locals { user: @user, profile: @profile %>
+
+<% unless current_user.friended.include?(@user) %>
+  <%= link_to 'Add friend', friend_requests_path(user: @user.id), method: :post, remote: true %>
+<% end %>

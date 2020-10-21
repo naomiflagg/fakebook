@@ -1,22 +1,9 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
-  def home
-    @friend_ids = current_user.friendships.accepted.pluck(:friend_id)
-    @pending_friend_ids = current_user.friendships.pending.pluck(:friend_id)
-
-  end
-
-  # GET /profiles
-  # GET /profiles.json
-  def index
-    @profiles = Profile.all
-  end
-
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-    set_profile
     @user = @profile.user
   end
 

@@ -1,27 +1,7 @@
-<p id="notice"><%= notice %></p>
+<%= render partial: 'profile', locals: { profile: @profile, user: @user } %>
 
-
-<p>
-  <strong>User:</strong>
-  <%= @user.name%>
-</p>
-
-<p>
-  <strong>Birthday:</strong>
-  <%= @profile.birthday %>
-</p>
-
-<p>
-  <strong>Location:</strong>
-  <%= @profile.location %>
-</p>
-
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
 <%= link_to 'Back', profiles_path %>
 <% if @profile == current_user.profile %>
   <%= link_to 'Edit profile', edit_profile_path(@profile) %>
   <%= link_to 'Delete profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>
-<% unless current_user.friends.include?(@user) %>
-  <%= link_to 'Add friend', friendships_path(user: @user.id), method: :post, remote: true %>
 <% end %>

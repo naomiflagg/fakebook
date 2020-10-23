@@ -1,46 +1,6 @@
 <h1>Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>User</th>
-      <th>Birthday</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <% if user.profile %>
-          <td><%= user.profile.birthday %></td>
-          <td><%= user.profile.location %></td>
-        <% else %>
-          <td>Profile not yet created</td>
-          <td></td>
-        <% end %>
-        <% if current_user.friends.include?(user) %>
-          <% friendship = Friendship.where(user_id: user.id) %>
-          <td><%= link_to 'Remove friend', friendships_path(friendship.id), \
-            method: :delete, data: { confirm: 'Are you sure?' } %></td>
-            <td><%= link_to 'View profile', user.profile %></td>
-        <% elsif current_user.pending_friends.include?(user) %>
-          <td>Friend request pending</td>
-        <% elsif current_user.frienders.include?(user) %>
-          <% request = Friendship.where(user_id: user.id) %>
-          <td>Friend request pending: 
-          <%= link_to 'Accept request', friendships_path(user: user.id) %>
-          <%= link_to 'Decline request', friend_request_path(request.id), method: :delete, remote: true %>
-          </td>
-        <% else %>
-          <td><%= link_to 'Add friend', friend_requests_path(user: user.id), method: :post, remote: true %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<%= render partial: 'shared/users_list', locals: { users: @users } %>
 
 <br>
 <% if current_user.profile %>

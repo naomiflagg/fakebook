@@ -1,0 +1,43 @@
+<table>
+  <thead>
+    <tr>
+      <th>User</th>
+      <th>Birthday</th>
+      <th>Location</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% users&.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <% if user.profile %>
+          <td><%= user.profile.birthday %></td>
+          <td><%= user.profile.location %></td>
+        <% else %>
+          <td>Profile not yet created</td>
+          <td></td>
+        <% end %>
+        <% relationship = current_user.describe_relationship(user) %>
+        <% case relationship %>
+        <% when 'friend' %>
+          <% friendship = current_user.friends?(user) %>
+          <td><%= button_to 'Remove friend', user_remove_friend_path(current_user.id, friendship.id), \
+            data: { confirm: 'Are you sure?' } %></td>
+          <td><%= link_to 'View profile', user.profile if user.profile %></td>
+        <% when 'friender' %>
+          <td>Friend request pending</td>
+        <% when 'friended' %>
+          <% request = current_user.received_request?(user) %>
+          <td>Friend request pending: 
+          <%= button_to 'Accept request', user_friendships_path(current_user.id, user: user.id) %>
+          <%= button_to 'Decline request', user_friend_request_path(current_user.id, request.id), method: :delete %>
+          </td>
+        <% else %>
+          <td><%= button_to 'Add friend', user_friend_requests_path(current_user.id, user: user.id), method: :post %></td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

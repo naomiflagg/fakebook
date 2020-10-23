@@ -1,0 +1,15 @@
+<% unless @posts.empty? %>
+  <h2>Posts</h2>
+  <ul>
+    <% @posts.each do |post| %>
+      <li>
+        <%= link_to post.created_at, post %><br>
+        <%= post.body %>
+        <% if post.user == current_user %>
+          <%= link_to 'Edit post', edit_post_path(post) %> |
+          <%= link_to 'Delete post', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

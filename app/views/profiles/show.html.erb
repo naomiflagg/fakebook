@@ -1,7 +1,0 @@
-<%= render partial: 'profile', locals: { profile: @profile, user: @user } %>
-
-<%= link_to 'Back', root_path %>
-<% if @profile == current_user.profile %>
-  <%= link_to 'Edit profile', edit_profile_path(@profile) %>
-  <%= link_to 'Delete profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %>
-<% end %>

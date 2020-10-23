@@ -1,0 +1,19 @@
+<% if @profile %>
+  <h2>About <%= user.name %></h2>
+
+  <p>
+    <strong>Birthday:</strong>
+    <%= profile.birthday %>
+  </p>
+
+  <p>
+    <strong>Location:</strong>
+    <%= profile.location %>
+  </p>
+
+
+  <% if user == current_user %>
+    <%= link_to 'Edit profile', edit_profile_path(current_user.profile) %>
+    <%= link_to 'Delete profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>

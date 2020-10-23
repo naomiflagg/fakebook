@@ -8,11 +8,11 @@ class FriendshipsController < ApplicationController
     request = current_user.received_request?(other_user)
     return unless request
 
-    friendship = current_user.friendships.build(friend_id: other_user)
+    friendship = current_user.friendships.build(friend_id: params[:user])
     request.destroy
 
     if friendship.save
-      flash[:success] = "Aw, #{@user.name} is now your friend!"
+      flash[:success] = "Aw, #{other_user.name} is now your friend!"
       redirect_back(fallback_location: root_path)
     else
       flash.now[:alert] = "Hmm. That did'nt work."

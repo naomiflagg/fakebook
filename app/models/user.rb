@@ -2,6 +2,7 @@ class User < ApplicationRecord
   validates_presence_of :first_name, :last_name
   
   has_one :profile, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :sent_requests, foreign_key: :friender_id, 
                            class_name: 'FriendRequest',
                            dependent: :destroy
@@ -28,5 +29,19 @@ class User < ApplicationRecord
 
   def received_request?(other_user)
     received_requests.find_by_friender_id(other_user.id)
+  end
+
+  def friends?(other_user)
+    friendships.find_by_friend_id(other_user.id)
+  end
+
+  def describe_relationship(other_user)
+    if friends?(other_user)
+      'friend'
+    elsif sent_request?(other_user)
+      'friender'
+    elsif received_request?(other_user)
+      'friended'
+    end
   end
 end

@@ -1,17 +1,7 @@
-<%= render partial: 'profiles/profile', locals { user: @user, profile: @profile %>
+<%= render partial: 'shared/profile', locals { user: @user, profile: @user.profile } %>
 
-<% if current_user.friends.include?(@user) %>
-  <% friendship = Friendship.where(user_id: user.id) %>
-  <%= link_to 'Remove friend', friendships_path(friendship.id), \
-    method: :delete, data: { confirm: 'Are you sure?' } %>
-  <%= link_to 'View profile', @user.profile %>
-<% elsif current_user.pending_friends.include?(@user) %>
-  Friend request pending
-<% elsif current_user.frienders.include?(@user) %>
-  <% request = Friendship.where(user_id: @user.id) %>
-  Friend request pending: 
-  <%= link_to 'Accept request', friendships_path(user: @user.id) %>
-  <%= link_to 'Decline request', friend_request_path(request), method: :delete, remote: true %>
-<% else %>
-  <%= link_to 'Add friend', friend_requests_path(user: @user.id), method: :post, remote: true %>
-<% end %>
+<%= render partial: 'shared/users_list', locals { users: @user } %>
+
+<%= render partial: 'shared/posts', locals { posts: @user.posts } %>
+
+<%= link_to 'Home', root_path %>

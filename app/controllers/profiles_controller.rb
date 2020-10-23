@@ -1,11 +1,5 @@
 class ProfilesController < ApplicationController
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-
-  # GET /profiles/1
-  # GET /profiles/1.json
-  def show
-    @user = @profile.user
-  end
+  before_action :set_profile, only: [:edit, :update, :destroy]
 
   # GET /profiles/new
   def new
@@ -65,6 +59,6 @@ class ProfilesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def profile_params
-      params.require(:profile).permit(:birthday, :location, :user_id)
+      params.require(:profile).permit(:birthday, :location)
     end
 end

@@ -13,3 +13,7 @@
     <%= render partial: 'shared/users_list', locals: { users: @pending} %>
   <% end %>
 </section>
+
+<section>
+  <%= render partial: 'shared/posts', locals { posts: @posts %>
+</section>

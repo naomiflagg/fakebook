@@ -44,4 +44,11 @@ class User < ApplicationRecord
       'friended'
     end
   end
+
+  def friends_posts
+    posts = []
+    friends.each do |f|
+      posts << f.posts.to_a
+    end
+  end
 end

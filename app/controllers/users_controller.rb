@@ -1,9 +1,5 @@
 class UsersController < ApplicationController
-  before_action :find_friend_ids, only: [:home, :index]
   
-  def home
-  end
-
   def index
     users = User.where.not(id: current_user.id)
     @users = users.includes(:profile).limit(10)

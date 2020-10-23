@@ -1,24 +1,33 @@
-class FriendRequestsController < ApplicationController
-  before_action :find_friend_requests, only: [:update, :destroy]
-
-  def create
-    current_user.friend_requests.create(accepted: false, friended_id: params[:user])
+class FriendshipsController < ApplicationController
+  def index
+    @friendships = current_user.friendships
   end
   
-  def update
-    @friend_request = FriendRequest.find(params[:id])
-    @friend_request.update(accepted: true)
+  def create
+    other_user = User.find(params[:user])
+    request = current_user.received_request?(other_user)
+    return unless request
+
+    friendship = current_user.friendships.build(friend_id: other_user)
+    request.destroy
+
+    if friendship.save
+      flash[:success] = "Aw, #{@user.name} is now your friend!"
+      redirect_back(fallback_location: root_path)
+    else
+      flash.now[:alert] = "Hmm. That did'nt work."
+    end
   end
 
   def destroy
-    @friend_request = FriendRequest.find(params[:id])
-    @friend_request.destroy
-  end
+    friendship = Friendship.find_by_id(params: id)
+    return unless friendship
 
-  private
-  
-  def find_friend_requests
-    friends = [current_user.id, params[:user]]
-    @friend_requests = FriendRequest.where(friended_id: friends).where(user_id: friends)
+    if friendship.destroy
+      flash[:success] = "I guess you and #{@user.name} are no longer friends."
+      redirect_back(fallback_location: root_path)
+    else
+      flash.now[:alert] = 'It seems the universe wants you to remain friends.'
+    end
   end
 end

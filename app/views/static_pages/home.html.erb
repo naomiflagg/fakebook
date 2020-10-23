@@ -1,0 +1,31 @@
+<h1>My Fakebook</h1>
+
+<h2>Friends</h2>
+
+<section>
+  <%= render 'shared/user_info' %>
+</section>
+<ul>
+  <% current_user.friends.each do |friend| %>
+    <% if friend.profile %>
+      <li><%= link_to friend.name, profile_path(friend.profile.id) %></li>
+    <% else %>
+      <li><%= friend.name %>: Profile not yet created</li>
+    <% end %>
+  <% end %>
+</ul>
+
+<h2>Pending friend requests</h2>
+<ul>
+  <% current_user.friended.each do |friend| %>
+    <li><%= friend.name %>: Friend request pending</li>
+  <% end %>
+  <% current_user.friend_requests_received.each do |request| %>
+    <% friender = User.find(request.user_id) %>
+    <li>
+      <%= friender.name %>: 
+      <%= link_to 'Accept request', friendships_path(user: friender.id) %>
+      Decline request
+    </li>
+  <% end %>
+</ul>

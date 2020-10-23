@@ -19,18 +19,20 @@
       <% if user_signed_in? %>
         <li>Signed in as <%= current_user.name %>. Not you?</li>
         <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+        <% unless current_user.requests_received.nil? %>
+          <li>Friend requests:
+          <% current_user.requests_received.each do |request| %>
+            <% friender = User.find(request.user_id) %>
+            <%= friender.name %>
+            <%= link_to 'Accept request', friend_request_path(request), method: :post %>
+            <%= link_to 'Decline request', friend_request_path(request), method: :delete, remote: true %>
+          <% end %>
+          </li>
+        <% end %>
       <% else %>
         <li><%= link_to 'Sign up', new_user_registration_path %></li>
         <li><%= link_to 'Sign in', new_user_session_path %></li>
       <% end %>
-      <li>Friend requests:
-      <% current_user.friend_requested.each do |request| %>
-        <% friender = User.find(request.user_id) %>
-        <%= friender.name %>
-        <%= link_to 'Accept request', friend_request_path(request), method: :post %>
-        <%= link_to 'Decline request', friend_request_path(request), method: :delete, remote: true %>
-      <% end %>
-      </li>
     </ul>
     </nav>
 

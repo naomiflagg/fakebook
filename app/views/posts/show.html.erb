@@ -6,9 +6,10 @@
 <p>
   <%= @post.created_at %>
   <%= @post.body %>
+  <%= render partial: 'shared/comments', locals: { post: @post, comments: @post.comments } %>
 </p>
 
- <% if @post.user == current_user %>
+<% if @post.user == current_user %>
   <%= link_to 'Edit post', edit_post_path(@post) %> |
   <%= link_to 'Delete post', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>

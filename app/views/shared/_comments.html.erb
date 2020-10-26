@@ -1,0 +1,10 @@
+<%= comments&.each do |com| %>
+  <%= com.user.name %>: 
+  <%= com.body %>
+  <% if comment.user == current_user %>
+    <%= link_to 'Edit comment', edit_post_comment(post, comment) %>
+    <%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>
+
+<%= link_to 'Add comment', new_post_comment(post) %>

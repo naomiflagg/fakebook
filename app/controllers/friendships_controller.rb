@@ -15,7 +15,7 @@ class FriendshipsController < ApplicationController
       flash[:success] = "Aw, #{other_user.name} is now your friend!"
       redirect_back(fallback_location: root_path)
     else
-      flash.now[:alert] = "Hmm. That did'nt work."
+      flash.now[:alert] = "Hmm. That didn't work."
     end
   end
 

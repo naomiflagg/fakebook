@@ -10,5 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, except: [:index, :show]
-  resources :posts, except: [:index]
+  resources :posts, except: [:index] do
+    resources :comments, except: [:index, :show]
+  end
 end

@@ -6,6 +6,13 @@
 <p>
   <%= @post.created_at %>
   <%= @post.body %>
+  <%= "Likes: #{@likes.count} | " if @post.likes.any? %>
+  <% like = current_user.post_like(@post) %>
+  <% unless like.nil? %>
+    <%= link_to 'Unlike', post_like_path(@post, like), method: :delete %>
+  <% else %>
+    <%= link_to 'Like', post_likes_path(@post), method: :post %>
+  <% end %>
   <%= render partial: 'shared/comments', locals: { post: @post, comments: @post.comments } %>
 </p>
 
@@ -14,4 +21,4 @@
   <%= link_to 'Delete post', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
 
-<%= link_to 'Back to profile', @post.user.profile %>
+<%= link_to 'Back to profile', @post.user %>

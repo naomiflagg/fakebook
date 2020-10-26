@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = 'Comment saved.'
-      redirect_back(fallback_location: @post)
+      redirect_to @post
     else
       flash.now[:alert] = 'Sorry, your comment could not be saved.'
     end
@@ -22,7 +22,7 @@ class CommentsController < ApplicationController
   def update
     if @comment.update(comment_params)
       flash[:success] = 'Comment updated successfully.'
-      redirect_back(fallback_location: @post)
+      redirect_to @post
     else
       flash.now[:alert] = 'Update could not be saved.'
     end

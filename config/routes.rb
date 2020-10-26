@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :profiles, except: [:index, :show]
   resources :posts, except: [:index] do
     resources :comments, except: [:index, :show]
+    resources :likes, only: [:create, :destroy]
   end
 end

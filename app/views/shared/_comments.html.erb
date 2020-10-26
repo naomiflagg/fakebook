@@ -1,10 +1,16 @@
-<%= comments&.each do |com| %>
-  <%= com.user.name %>: 
-  <%= com.body %>
-  <% if comment.user == current_user %>
-    <%= link_to 'Edit comment', edit_post_comment(post, comment) %>
-    <%= link_to 'Delete comment', comment, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% unless comments.empty? %>
+  <ul>
+  <% comments.each do |com| %>
+    <li>
+      <%= com.user.name %>: 
+      <%= com.body %><br>
+      <% if com.user == current_user || post.user == current_user %>
+        <%= link_to 'Edit comment', edit_post_comment_path(post, com) %>
+        <%= link_to 'Delete comment', post_comment_path(post, com), method: :delete, data: { confirm: 'Are you sure?' } %><br>
+      <% end %>
+    </li>
   <% end %>
+  </ul>
 <% end %>
 
-<%= link_to 'Add comment', new_post_comment(post) %>
+<%= link_to 'Add comment', new_post_comment_path(post) %>

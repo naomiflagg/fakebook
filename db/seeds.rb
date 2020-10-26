@@ -37,9 +37,26 @@ users = User.all
 #   random_request.destroy
 # end
 
-Post.destroy_all
+# Post.destroy_all
+# 200.times do
+#   user = users.sample
+#   text = Faker::Quote.famous_last_words
+#   user.posts.create(body: text)
+# end
+
+posts = Post.all
+
+# Comment.destroy_all
+# 200.times do
+#   post = posts.sample
+#   user = users.sample
+#   text = Faker::Quote.famous_last_words
+#   post.comments.create(body: text, user_id: user.id)
+# end
+
+Like.destroy_all
 200.times do
+  post = posts.sample
   user = users.sample
-  text = Faker::Quote.famous_last_words
-  user.posts.create(body: text)
+  post.likes.create(user_id: user.id)
 end

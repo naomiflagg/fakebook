@@ -5,13 +5,20 @@
       <li>
         <%= link_to post.user.name, post.user %>
         <%= link_to post.created_at, post %><br>
-        <%= post.body %>
-        <%= render partial: 'comments', locals: { post: post, comments: post.comments } %>
+        <%= post.body %><br>
+        <%= "Likes: #{post.likes.count} | " if post.likes.any? %>
+        <% like = current_user.post_like(post) %>
+        <% unless like.nil? %>
+          <%= link_to 'Unlike', post_like_path(post, like), method: :delete %>
+        <% else %>
+          <%= link_to 'Like', post_likes_path(post), method: :post %>
+        <% end %><br>
+        <%= render partial: 'shared/comments', locals: { post: post, comments: post.comments } %>
         <% if post.user == current_user %>
           <%= link_to 'Edit post', edit_post_path(post) %> |
           <%= link_to 'Delete post', post, method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
-      </li>
+      </li><br>
     <% end %>
   </ul>
 <% end %>

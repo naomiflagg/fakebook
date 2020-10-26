@@ -25,7 +25,7 @@
           <% friendship = current_user.friends?(user) %>
           <td><%= button_to 'Remove friend', user_remove_friend_path(current_user.id, friendship.id), \
             data: { confirm: 'Are you sure?' } %></td>
-          <td><%= link_to 'View profile', user.profile if user.profile %></td>
+          <td><%= link_to 'View profile', user %></td>
         <% when 'friender' %>
           <td>Friend request pending</td>
         <% when 'friended' %>
@@ -34,6 +34,7 @@
           <%= button_to 'Accept request', user_friendships_path(current_user.id, user: user.id) %>
           <%= button_to 'Decline request', user_friend_request_path(current_user.id, request.id), method: :delete %>
           </td>
+        <% when 'self' %>
         <% else %>
           <td><%= button_to 'Add friend', user_friend_requests_path(current_user.id, user: user.id), method: :post %></td>
         <% end %>

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
   has_many :sent_requests, foreign_key: :friender_id, 
                            class_name: 'FriendRequest',
                            dependent: :destroy
@@ -43,6 +44,8 @@ class User < ApplicationRecord
       'friender'
     elsif received_request?(other_user)
       'friended'
+    elsif self == other_user
+      'self'
     end
   end
 
@@ -51,5 +54,10 @@ class User < ApplicationRecord
     friends.each do |f|
       posts << f.posts.to_a
     end
+    posts.flatten
+  end
+
+  def post_like(post)
+    likes.find_by_post_id(post.id)
   end
 end

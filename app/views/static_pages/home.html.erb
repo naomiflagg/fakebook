@@ -10,11 +10,24 @@
 <section>
   <% unless @pending.empty? %>
     <h2>Pending friend requests</h2>
-    <%= render partial: 'shared/users_list', locals: { users: @pending} %>
+    <%= render partial: 'shared/users_list', locals: { users: @pending } %>
   <% end %>
 </section>
 
 <section>
-  <%= render partial: 'shared/posts', locals { posts: @posts %>
+  <%= render partial: 'shared/posts', locals: { posts: @posts } %>
   <%= link_to 'Create new post', new_post_path %>
+</section>
+
+<section>
+  <% if current_user.profile %>
+    <%= link_to 'Edit my profile', edit_profile_path(current_user.profile) %>
+    <%= link_to 'View my profile', current_user %><br>
+  <% else %>
+    <%= link_to 'Create my profile', new_profile_path %>
+  <% end %>
+</section>
+
+<section>
+  <%= link_to 'View all users', users_path %>
 </section>

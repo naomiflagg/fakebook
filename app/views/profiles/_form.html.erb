@@ -11,15 +11,20 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :birthday %>
     <%= form.date_select :birthday, start_year: 1900 %>
   </div>
 
-  <div class="field">
+  <div class='field'>
     <%= form.label :location %>
     <%= form.text_field :location %>
   </div>
+
+<div class='field'>
+  <%= form.label :photo %>
+  <%= form.file_field :photo %>
+</div>
 
   <div class="actions">
     <%= form.submit %>

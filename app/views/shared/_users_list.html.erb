@@ -25,7 +25,7 @@
           <% friendship = current_user.friends?(user) %>
           <td><%= button_to 'Remove friend', user_remove_friend_path(current_user.id, friendship.id), \
             data: { confirm: 'Are you sure?' } %></td>
-          <td><%= link_to 'View profile', user %></td>
+          <td><%= link_to 'View profile', user unless current_page?(user) %></td>
         <% when 'friender' %>
           <td>Friend request pending</td>
         <% when 'friended' %>

@@ -52,6 +52,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.1'
   # Populate database with fake data
   gem 'faker', '~> 1.6', '>= 1.6.6'
+  gem 'shoulda-matchers'
 end
 
 group :development do

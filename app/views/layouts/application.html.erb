@@ -21,7 +21,10 @@
         <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
         <%= link_to 'Home', root_path unless current_page?(root_path) %>
         <% unless current_user.frienders.empty? %>
-          <li><%= render partial: 'shared/users_list', locals: { users: current_user.frienders } %>
+          <li>
+          Pending requests:
+          <%= render partial: 'shared/users_list', locals: { users: current_user.frienders } %>
+          </li>
         <% end %>
       <% end %>
     </ul>

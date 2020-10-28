@@ -62,4 +62,8 @@ class User < ApplicationRecord
   def post_like(post)
     likes.find_by_post_id(post.id)
   end
+
+  def friends_posts
+    Post.where('user_id IN (:friends)', friends: friends.select(:id))
+  end
 end

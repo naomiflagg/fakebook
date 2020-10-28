@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks', registrations: 'users/registrations' }
   
   resources :users, only: [:index, :show] do
     resources :friend_requests, only: [:create, :destroy]
@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
 
   resources :profiles, except: [:index, :show]
+  
   resources :posts, except: [:index] do
     resources :comments, except: [:index, :show]
     resources :likes, only: [:create, :destroy]

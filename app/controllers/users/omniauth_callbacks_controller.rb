@@ -2,7 +2,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   skip_before_action :verify_authenticity_token, only: :facebook
 
   def facebook
-    flash[:notice] = 'Sorry, Fakebook is not actually live on Facebook, so this feature only works in development.'
     @user = User.from_omniauth(request.env['omniauth.auth'])
 
     if @user.persisted?

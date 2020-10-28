@@ -1,5 +1,5 @@
 class UserMailer < ApplicationMailer
-  default from: 'info@polar-island-23304.herokuapp.com'
+  default from: 'naoflagg@gmail.com'
 
   def welcome_email
     @user = params[:user]

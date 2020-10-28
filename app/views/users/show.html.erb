@@ -2,7 +2,7 @@
 
 <%= render partial: 'shared/users_list', locals: { users: User.where(id: @user.id) } %>
 
-<%= render partial: 'shared/posts', locals: { posts: @user.posts } %>
+<%= render partial: 'shared/posts', locals: { posts: @posts } %>
 
 <% if @user == current_user %>
   <%= link_to 'Create new post', new_post_path %>

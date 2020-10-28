@@ -41,6 +41,10 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'omniauth-facebook'
 gem 'figaro'
 gem 'aws-sdk-s3', require: false
+# Use Image Processing for resizing images
+gem 'image_processing', '~> 1.12'
+gem 'sendgrid-ruby'
+gem 'will_paginate', '~> 3.1', '>= 3.1.6'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

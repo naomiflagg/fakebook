@@ -59,14 +59,6 @@ class User < ApplicationRecord
     end
   end
 
-  def friends_posts
-    posts = []
-    friends.each do |f|
-      posts << f.posts.to_a
-    end
-    posts.flatten
-  end
-
   def post_like(post)
     likes.find_by_post_id(post.id)
   end

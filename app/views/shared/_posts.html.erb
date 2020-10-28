@@ -4,7 +4,7 @@
     <% posts.each do |post| %>
       <li>
         <%= link_to post.user.name, post.user %>
-        <%= link_to post.created_at, post %><br>
+        <%= link_to post.created_at.strftime('%d %B %Y %H:%M:%S'), post %><br>
         <%= post.body %><br>
         <%= "Likes: #{post.likes.count} | " if post.likes.any? %>
         <% like = current_user.post_like(post) %>
@@ -21,4 +21,5 @@
       </li><br>
     <% end %>
   </ul>
+  <%= will_paginate posts %>
 <% end %>

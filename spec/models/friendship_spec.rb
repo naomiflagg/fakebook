@@ -20,10 +20,8 @@ RSpec.describe Friendship, type: :model do
     it { should belong_to(:friend).class_name('User') }
   end
 
-  # describe 'inverses' do
   #   describe '#create_inverse' do
   #     it 'creates an inverse friendship' do
-  #       puts "1 friendship: #{friendship}, 1 inverse: #{inverse_friendship}"
   #       expect(inverse_friendship).to exist
   #     end
   #   end
@@ -31,7 +29,6 @@ RSpec.describe Friendship, type: :model do
   #   describe '#has_inverse?' do
   #     context 'when an inverse exists' do
   #       it 'returns true' do
-  #         puts "2 friendship: #{friendship}, 2 inverse: #{inverse_friendship}"
   #         expect(friendship.has_inverse?).to be true
   #       end
   #     end
@@ -39,7 +36,6 @@ RSpec.describe Friendship, type: :model do
 
   #   describe '#inverses' do
   #     it 'returns the inverse friendship' do
-  #       puts "3 friendship: #{friendship}, 3 inverse: #{inverse_friendship}"
   #       expect(friendship.inverses).to eq(inverse_friendship)
   #     end
   #   end

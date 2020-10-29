@@ -1,6 +1,6 @@
 <%= render partial: 'shared/profile', locals: { user: @user, profile: @user.profile } %>
 
-<%= render partial: 'shared/users_list', locals: { users: User.where(id: @user.id) } %>
+<%= render partial: 'shared/users_list', locals: { users: User.where('id = ?', @user.id) } %>
 
 <%= render partial: 'shared/posts', locals: { posts: @posts } %>
 

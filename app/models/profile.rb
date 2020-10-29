@@ -14,7 +14,7 @@ class Profile < ApplicationRecord
 
     acceptable_types = ['image/jpeg', 'image/png']
     unless acceptable_types.include?(photo.content_type)
-      errors.add(:main_image,'must be a JPEG or PNG')
+      errors.add(:main_image, 'must be a JPEG or PNG')
     end
   end
 end

@@ -1,20 +1,25 @@
 <% if profile %>
   <h2>About <%= user.name %></h2>
-  <%= image_tag profile.photo.variant(resize: '100x100') %>
+  <% photo = profile.photo.attached? ? profile.photo.variant(resize: '100x100') : 'avatar.png' %>
+  <%= image_tag photo %>
 
-  <p>
-    <strong>Birthday:</strong>
-    <%= profile.birthday %>
-  </p>
+  <% if profile.birthday.present? %>
+    <p>
+      <strong>Birthday:</strong>
+      <%= profile.birthday if profile.birthday %>
+    </p>
+  <% end %>
 
-  <p>
-    <strong>Location:</strong>
-    <%= profile.location %>
-  </p>
+  <% if profile.location.present? %>
+    <p>
+      <strong>Location:</strong>
+      <%= profile.location %>
+    </p>
+  <% end %>
 
 
   <% if user == current_user %>
-    <%= link_to 'Edit profile', edit_profile_path(current_user.profile) %>
-    <%= link_to 'Delete profile', @profile, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Edit profile', edit_profile_path(profile) %>
+    <%= link_to 'Delete profile', profile, method: :delete, data: { confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>

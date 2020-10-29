@@ -1,2 +1,2 @@
-<%= render partial: 'shared/posts', locals: { posts: Post.where(id: params[:id]) } %>
+<%= render partial: 'shared/posts', locals: { posts: Post.where('id = ?', @post.id) } %>
 <%= link_to 'View user profile', @post.user %>

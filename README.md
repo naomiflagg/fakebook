@@ -1,24 +1,13 @@
-# README
+# Fakebook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This Facebook-like web application was developed as part of The Odin Project's [Ruby on Rails Curriculum](http://www.theodinproject.com)
 
-Things you may want to cover:
+While the site has not yet been stylized, the app is fully functional.
 
-* Ruby version
+The deployed site can be viewed [here](https://polar-island-23304.herokuapp.com/).
 
-* System dependencies
+![Fakebook sign-in](app/assets/images/ss1.png)
 
-* Configuration
+![Fakebook sign-in](app/assets/images/ss2.png)
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+![Fakebook sign-in](app/assets/images/ss3.png)

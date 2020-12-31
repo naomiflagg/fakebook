@@ -1,6 +1,6 @@
 # Fakebook
 
-This Facebook-like web application was developed as part of The Odin Project's [Ruby on Rails Curriculum](http://www.theodinproject.com)
+Facebook-like web application.
 
 While the site has not yet been stylized, the app is fully functional.
 

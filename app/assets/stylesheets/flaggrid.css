@@ -1,0 +1,571 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol,
+ul {
+  list-style: none;
+}
+
+blockquote,
+q {
+  quotes: none;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Flaggrid */
+/* Miscellaneous
+-----------------------------------------------*/
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+img {
+  max-width: 100%;
+}
+
+.no-display {
+  display: none;
+}
+
+/* Grid container
+-----------------------------------------------*/
+.grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+}
+
+@media (min-width: 576px) {
+  .grid-sm-1 {
+    grid-column: span 1;
+  }
+
+  .grid-sm-2 {
+    grid-column: span 2;
+  }
+
+  .grid-sm-3 {
+    grid-column: span 3;
+  }
+
+  .grid-sm-4 {
+    grid-column: span 4;
+  }
+
+  .grid-sm-5 {
+    grid-column: span 5;
+  }
+
+  .grid-sm-6 {
+    grid-column: span 6;
+  }
+
+  .grid-sm-7 {
+    grid-column: span 7;
+  }
+
+  .grid-sm-8 {
+    grid-column: span 8;
+  }
+
+  .grid-sm-9 {
+    grid-column: span 9;
+  }
+
+  .grid-sm-10 {
+    grid-column: span 10;
+  }
+
+  .grid-sm-11 {
+    grid-column: span 11;
+  }
+
+  .grid-sm-12 {
+    grid-column: span 12;
+  }
+
+  .grid-sm {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+@media (min-width: 768px) {
+  .grid-m-1 {
+    grid-column: span 1;
+  }
+
+  .grid-m-2 {
+    grid-column: span 2;
+  }
+
+  .grid-m-3 {
+    grid-column: span 3;
+  }
+
+  .grid-m-4 {
+    grid-column: span 4;
+  }
+
+  .grid-m-5 {
+    grid-column: span 5;
+  }
+
+  .grid-m-6 {
+    grid-column: span 6;
+  }
+
+  .grid-m-7 {
+    grid-column: span 7;
+  }
+
+  .grid-m-8 {
+    grid-column: span 8;
+  }
+
+  .grid-m-9 {
+    grid-column: span 9;
+  }
+
+  .grid-m-10 {
+    grid-column: span 10;
+  }
+
+  .grid-m-11 {
+    grid-column: span 11;
+  }
+
+  .grid-m-12 {
+    grid-column: span 12;
+  }
+
+  .grid-m {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+@media (min-width: 992px) {
+  .grid-lg-1 {
+    grid-column: span 1;
+  }
+
+  .grid-lg-2 {
+    grid-column: span 2;
+  }
+
+  .grid-lg-3 {
+    grid-column: span 3;
+  }
+
+  .grid-lg-4 {
+    grid-column: span 4;
+  }
+
+  .grid-lg-5 {
+    grid-column: span 5;
+  }
+
+  .grid-lg-6 {
+    grid-column: span 6;
+  }
+
+  .grid-lg-7 {
+    grid-column: span 7;
+  }
+
+  .grid-lg-8 {
+    grid-column: span 8;
+  }
+
+  .grid-lg-9 {
+    grid-column: span 9;
+  }
+
+  .grid-lg-10 {
+    grid-column: span 10;
+  }
+
+  .grid-lg-11 {
+    grid-column: span 11;
+  }
+
+  .grid-lg-12 {
+    grid-column: span 12;
+  }
+
+  .grid-lg {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+@media (min-width: 1200px) {
+  .grid-xl-1 {
+    grid-column: span 1;
+  }
+
+  .grid-xl-2 {
+    grid-column: span 2;
+  }
+
+  .grid-xl-3 {
+    grid-column: span 3;
+  }
+
+  .grid-xl-4 {
+    grid-column: span 4;
+  }
+
+  .grid-xl-5 {
+    grid-column: span 5;
+  }
+
+  .grid-xl-6 {
+    grid-column: span 6;
+  }
+
+  .grid-xl-7 {
+    grid-column: span 7;
+  }
+
+  .grid-xl-8 {
+    grid-column: span 8;
+  }
+
+  .grid-xl-9 {
+    grid-column: span 9;
+  }
+
+  .grid-xl-10 {
+    grid-column: span 10;
+  }
+
+  .grid-xl-11 {
+    grid-column: span 11;
+  }
+
+  .grid-xl-12 {
+    grid-column: span 12;
+  }
+
+  .grid-xl {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+/* Flex container
+-----------------------------------------------*/
+.flex {
+  display: flex;
+}
+
+/* Grid and flex container properties 
+-----------------------------------------------*/
+.justify-content-end {
+  justify-content: end;
+}
+
+.justify-content-center {
+  justify-content: center;
+}
+
+.justify-content-stretch {
+  justify-content: stretch;
+}
+
+.justify-content-around {
+  justify-content: space-around;
+}
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.justify-content-evenly {
+  justify-content: space-evenly;
+}
+
+.align-items-start {
+  align-items: start;
+}
+
+.align-items-end {
+  align-items: end;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+/* Positioning
+-----------------------------------------------*/
+.position-fixed {
+  position: fixed;
+}
+
+.position-relative {
+  position: relative;
+}
+
+.position-absolute {
+  position: absolute;
+}
+
+/* Font-sizes
+-----------------------------------------------*/
+.f-8 {
+  font-size: 8px;
+}
+
+.f-9 {
+  font-size: 9px;
+}
+
+.f-10 {
+  font-size: 10px;
+}
+
+.f-11 {
+  font-size: 11px;
+}
+
+.f-12 {
+  font-size: 12px;
+}
+
+.f-13 {
+  font-size: 13px;
+}
+
+.f-14 {
+  font-size: 14px;
+}
+
+.f-15 {
+  font-size: 15px;
+}
+
+.f-16 {
+  font-size: 16px;
+}
+
+.f-17 {
+  font-size: 17px;
+}
+
+.f-18 {
+  font-size: 18px;
+}
+
+.f-19 {
+  font-size: 19px;
+}
+
+.f-20 {
+  font-size: 20px;
+}
+
+.f-21 {
+  font-size: 21px;
+}
+
+.f-22 {
+  font-size: 22px;
+}
+
+.f-23 {
+  font-size: 23px;
+}
+
+.f-24 {
+  font-size: 24px;
+}
+
+.f-25 {
+  font-size: 25px;
+}
+
+.f-26 {
+  font-size: 26px;
+}
+
+.f-27 {
+  font-size: 27px;
+}
+
+.f-28 {
+  font-size: 28px;
+}
+
+.f-29 {
+  font-size: 29px;
+}
+
+.f-30 {
+  font-size: 30px;
+}
+
+.f-31 {
+  font-size: 31px;
+}
+
+.f-32 {
+  font-size: 32px;
+}
+
+.f-33 {
+  font-size: 33px;
+}
+
+.f-34 {
+  font-size: 34px;
+}
+
+.f-35 {
+  font-size: 35px;
+}
+
+.f-36 {
+  font-size: 36px;
+}
+
+.f-37 {
+  font-size: 37px;
+}
+
+.f-38 {
+  font-size: 38px;
+}
+
+.f-39 {
+  font-size: 39px;
+}
+
+.f-40 {
+  font-size: 40px;
+}
